@@ -3,7 +3,7 @@ cd terraform-resources
 terraform init && terraform apply
 
 echo "## Waiting 1m for cluster creation"
-sleep 1m
+sleep 2m
 
 echo "## Executing ansible"
 cd ../
