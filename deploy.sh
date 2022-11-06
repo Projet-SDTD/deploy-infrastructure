@@ -7,4 +7,5 @@ sleep 1m
 
 echo "## Executing ansible"
 cd ../
-ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory ansible-playbooks/initial-kubernetes
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i terraform-resources/inventory ansible-playbooks/initial-kubernetes.yaml
+cp ansible-playbooks/fetched/kubeconfig ./
