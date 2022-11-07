@@ -16,6 +16,18 @@ filepath = os.path.abspath(__file__)
 dirpath = os.path.dirname(filepath)
 preferredInstallDirectories = ["/usr/local/sbin","/usr/local/bin","/usr/sbin","/usr/bin"]
 
+def checkFiles():
+    os.chdir(os.path.join(dirpath, "terraform-resources"))
+    if not(os.path.exists("main.auto.tfvars")):
+        print("## Please copy terraform-resources/main.example.tfvars to terraform-resources/main.auto.tfvars and fill it with your variables")
+        exit(1)
+    if not(os.path.exists("credentials.json")):
+        print("## Please retrieve a .json key from gcp account and put it in terraform-resources/credentials.json")
+        exit(1)
+    if not(os.path.exists("terraform_key.pub")):
+        print("## Please copy your ssh public key to terraform-resources/terraform_key.pub")
+        exit(1)
+
 def aptInstalled():
     try:
         subprocess.run(["apt", "-v"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -110,6 +122,8 @@ currentSystem = platform.system()
 if currentSystem != 'Linux':
     print("## This script is intended for Linux only !")
     exit(1)
+
+checkFiles()
 
 if not(terraformInstalled()):
     print("## Terraform not installed")
