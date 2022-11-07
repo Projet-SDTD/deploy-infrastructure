@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "## Applying terraform"
 cd terraform-resources
 terraform init && terraform apply
