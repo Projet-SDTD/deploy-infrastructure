@@ -4,7 +4,7 @@ echo "## Applying terraform"
 cd terraform-resources
 terraform init && terraform apply
 
-echo "## Waiting 1m for cluster creation"
+echo "## Waiting 2m for cluster creation"
 sleep 2m
 
 echo "## Executing ansible"
