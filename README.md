@@ -28,7 +28,10 @@ Pour déployer notre application nous utilisons les outils Terraform et Ansible.
 
 Distributions Debian/Ubuntu :
 ```
-sudo apt-get install terraform ansible kubectl python3
+sudo apt-get install terraform python3 python3-pip
+python3 -m pip install ansible
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
 
 Distributions Manjaro/Arch :
@@ -63,7 +66,7 @@ Copier le fichier `main.example.tfvars` dans un fichier `main.auto.tfvars` et le
 - le nom de l'utilisateur local a qui appartient la clé SSH créée précédemment (ex: "leo")
 - le nom du fichier qui contient la clé publique de la clé SSH créée précédemment (ex:" `terraform_key.pub`")
 - le nombre d'instances que l'on souhaite créer (ex: 3)
-- les réseaux autorisés à se connecter aux instances; ici, il faut qu'il y ai au moins le nôtre (ex: 130.190.0.0/16)
+- les réseaux autorisés à se connecter aux instances (format CIDR); ici, il faut qu'il y ait au moins le nôtre (ex: 130.190.0.0/16)
 
 #### Lancer le script de déploiement
 Si les étapes précédentes ont été réalisées correctement, le déploiement de notre application sur la plateforme Google Cloud ne devrait soulever aucune erreur. Pour cela, il faut lancer le script Python `deploy.py` :
