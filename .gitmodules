@@ -7,3 +7,6 @@
 [submodule "kubernetes-manifests-devops"]
 	path = kubernetes-manifests-devops
 	url = git@gitlab.ensimag.fr:sdtd_2022-my-awesome-group/devops/kubernetes-manifests-devops.git
+[submodule "kubernetes-manifests-sre"]
+	path = kubernetes-manifests-sre
+	url = git@gitlab.ensimag.fr:sdtd_2022-my-awesome-group/sre/kubernetes-manifests-sre.git
