@@ -2,3 +2,4 @@ kubeconfig
 fullchain.pem
 privkey.pem
 fullchain.crt
+demo

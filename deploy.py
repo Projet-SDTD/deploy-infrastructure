@@ -44,8 +44,10 @@ def pythonInstalled():
 
 def pipInstalled():
     try:
-        subprocess.run(["python3","-m","pip", "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        return True
+        rc = subprocess.run(["python3","-m","pip", "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode
+        if rc == 0:
+            return True
+        return False
     except:
         return False
 
@@ -83,8 +85,10 @@ def installTerraform():
             subprocess.run(["wget", "-O", "terraform.zip", "https://releases.hashicorp.com/terraform/1.3.4/terraform_1.3.4_linux_amd64.zip"])
             pzf = PyZipFile("terraform.zip")
             pzf.extractall()
-            subprocess.run(["sudo", "mv", "terraform/terraform", "/usr/local/bin/"])
-            shutil.rmtree("terraform")
+            subprocess.run(["sudo", "mv", "terraform", "/usr/local/bin/"])
+            subprocess.run(["sudo", "chmod", "+x", "/usr/local/bin/terraform"])
+            os.remove("terraform")
+            os.remove("terraform.zip")
             assert terraformInstalled()
             print("## Successfully installed terraform")
         except:
@@ -95,10 +99,10 @@ def installAnsible():
     try:
         if not(pythonInstalled()):
             assert aptInstalled()
-            subprocess.run(["sudo", "apt", "install", "python3"])
+            subprocess.run(["sudo", "apt", "install", "-y", "python3"])
         if not(pipInstalled()):
             assert aptInstalled()
-            subprocess.run(["sudo", "apt", "install", "python3-pip"])
+            subprocess.run(["sudo", "apt", "install", "-y", "python3-pip"])
         subprocess.run(["python3", "-m", "pip", "install", "ansible"])
         assert ansibleInstalled()
         print("## Ansible installed succesfully !")
