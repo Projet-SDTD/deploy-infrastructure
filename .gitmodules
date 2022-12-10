@@ -1,0 +1,15 @@
+[submodule "kubernetes-manifests-dev"]
+	path = kubernetes-manifests-dev
+	url = git@github.com:Projet-SDTD/kubernetes-manifests-dev.git
+[submodule "terraform-resources"]
+	path = terraform-resources
+	url = git@github.com:Projet-SDTD/terraform-resources.git
+[submodule "kubernetes-manifests-sre"]
+	path = kubernetes-manifests-sre
+	url = git@github.com:Projet-SDTD/kubernetes-manifests-sre.git
+[submodule "kubernetes-manifests-devops"]
+	path = kubernetes-manifests-devops
+	url = git@github.com:Projet-SDTD/kubernetes-manifests-devops.git
+[submodule "ansible-playbooks"]
+	path = ansible-playbooks
+	url = git@github.com:Projet-SDTD/ansible-playbooks.git
