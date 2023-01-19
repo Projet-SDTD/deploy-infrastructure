@@ -141,7 +141,7 @@ deployTerraform()
 
 if not(args.nda):
 
-    for i in range(12,0,-1):
+    for i in range(25,0,-1):
         print("## Waiting "+str(i*10)+" seconds for changes to propagate")
         time.sleep(10)
 
