@@ -4,7 +4,6 @@ import os
 import platform
 import subprocess
 from zipfile import PyZipFile
-import shutil
 import argparse
 import time
 
